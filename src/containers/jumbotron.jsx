@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import jumboData from "../fixtures/jumbo.json"
-import { Jumbotron } from "../components/jumbotron";
+import { Jumbotron } from "../components/jumbotron/index";
 
 export function JumbotronContainer() {
     return (
