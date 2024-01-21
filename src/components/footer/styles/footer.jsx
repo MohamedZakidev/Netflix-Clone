@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-
 export const Container = styled.div`
     display: flex;
     max-width: 1000px;
     flex-direction: column;
     padding: 70px 56px;
     margin: auto;
-    
+    background: transparent;
+    background: ${({ signinfooter }) => signinfooter ? 'rgba(0, 0, 0, 75)' : ""};
     @media (max-width: 1000px) {
         padding: 70px 30px;
     }
