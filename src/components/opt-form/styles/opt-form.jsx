@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.form`
+export const Container = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100%;
     margin-top: 20px;
-    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: auto;
+    column-gap: 20px;
     
     @media (max-width: 1000px) {
         flex-direction: column;
@@ -18,21 +20,22 @@ export const Input = styled.input`
     max-width: 450px;
     width: 100%;
     border: 0;
-    border-radius: 5px;
-    padding: 20px;
+    padding: 20px 25px;
     box-sizing: border-box;
-    background: #111111;
-    font-size: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #111111;
     color: white;
 `;
 
 export const Button = styled.button`
     display: flex;
     align-items: center;
+    height: 70px;
     background: #e50914;
     color: white;
-    padding: 18px 30px;
-    font-size: 20px;
+    padding: 0 32px;
+    font-size: 26px;
     font-weight: 600;
     border: 0;
     border-radius: 5px;
@@ -41,10 +44,10 @@ export const Button = styled.button`
     img {
         margin-left: 10px;
         filter: brightness(0) invert(1);
-        width: 20px;
+        width: 24px;
         
         @media (max-width: 1000px) {
-            
+            width: 16px;
         }
     }
 
