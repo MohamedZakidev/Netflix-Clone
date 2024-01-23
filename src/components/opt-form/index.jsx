@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Container, Input, Button, Text } from './styles/opt-form'
 
-export default function OptForm({ children, ...restProps}) {
+export default  function OptForm({ children, ...restProps}) {
     return <Container {...restProps}>{children}</Container>
 }
 
-OptForm.Input = function OptFormInput({ ...restProps }) {
+OptForm.Input = forwardRef(function OptFormInput({ ...restProps }, ref) {
     return (
-        <Input {...restProps} />
-    )
-}
-
+        <Input ref={ref} {...restProps} />
+        )
+})
+    
 OptForm.Button = function OptFormButton({ children, ...restProps }) {
     return (
         <Button {...restProps}>{children}</Button>

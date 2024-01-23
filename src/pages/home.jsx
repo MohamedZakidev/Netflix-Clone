@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { JumbotronContainer } from "../containers/jumbotron";
 import { FooterContainer } from "../containers/footer";
 import { FaqsContainer } from "../containers/faqs";
@@ -7,6 +7,11 @@ import OptForm from "../components/opt-form";
 import Feature from "../components/feature";
 
 export default function Home() {
+    const inputRef = useRef()
+    function handleFocus() {
+        inputRef.current.focus()
+    }
+
     return (
         <>
             <HeaderContainer>
@@ -14,8 +19,8 @@ export default function Home() {
                     <Feature.Title>Unlimited films, TV programmes and more.</Feature.Title>
                     <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
                     <OptForm>
-                        <OptForm.Input placeholder="Email Address" />
-                        <OptForm.Button>Get Started <img src="/images/icons/chevron-right.png" alt="get started" /></OptForm.Button>
+                        <OptForm.Input ref={inputRef} placeholder="Email Address" />
+                        <OptForm.Button onClick={handleFocus}>Get Started <img src="/images/icons/chevron-right.png" alt="get started" /></OptForm.Button>
                         <OptForm.Text>Ready to watch? Enter your email to create or restart
                         your membership.</OptForm.Text>
                     </OptForm>

@@ -5,8 +5,7 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 70px 56px;
     margin: auto;
-    background: transparent;
-    background: ${({ signinfooter }) => signinfooter ? 'rgba(0, 0, 0, 75)' : ""};
+    background: #000;
     @media (max-width: 1000px) {
         padding: 70px 30px;
     }
