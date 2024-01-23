@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { FirebaseContext } from "../context/firebase";
 import { HeaderContainer } from "../containers/header";
 import { FooterContainer } from "../containers/footer";
 import Form from "../components/form";
 import * as ROUTES from '../constants/routes'
 
 export default function Signup() {
+    const navigate = useNavigate()
+    const { firebase } = useContext(FirebaseContext)
+
     const [formData, setFormData] = useState({
         firstName: '',
         email: '',
         password: '',
-        error: ''
     })
+    const [error, setError] = useState()
 
-    const { firstName, email, password, error } = formData
+    const { firstName, email, password } = formData
     const isInvalid = firstName === '' || email === '' || password === ''
 
     function handleChange(event) {
@@ -27,6 +32,21 @@ export default function Signup() {
     
     function handleSignup(event) {
         event.preventDefault()
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((result) =>
+                result.user
+                .updateProfile({
+                    displayName: firstName,
+                    photoURL: Math.floor(Math.random() * 5 ) + 1,
+                })
+                .then(() => {
+                    setFormData((prev) => ({...prev, email: "", password: ""}))
+                    setError('');
+                    navigate(ROUTES.BROWSE)
+                })
+            ).catch((error) => setError(error.message));
     }
 
     return (
@@ -60,7 +80,7 @@ export default function Signup() {
                         />
 
                         <Form.Submit disabled={isInvalid} type="submit">
-                            Sign in
+                            Sign up
                         </Form.Submit>
 
                         <Form.Text>
