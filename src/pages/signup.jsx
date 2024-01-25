@@ -32,7 +32,7 @@ export default function Signup() {
     
     function handleSignup(event) {
         event.preventDefault()
-        firebase
+        firebase.firebase_
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then((result) =>
