@@ -5,7 +5,7 @@ export const Background = styled.section`
     display: flex;
     flex-direction: column;
     background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')});
-    background-size: contain;
+    background-size: ${( {src} ) => src ? "contain" : "cover" };
     background-repeat: no-repeat;
 
     @media (max-width: 800px) {
