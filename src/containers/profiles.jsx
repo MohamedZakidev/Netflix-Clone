@@ -4,7 +4,14 @@ import Header from "../components/header";
 import * as ROUTES from "../constants/routes"
 import Profiles from "../components/profiles";
 
-export function ProfilesContainer({ user, setProfile }) {
+export function ProfilesContainer({ loading, setLoading, user, setProfile }) {
+    function handleLoadingState() {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
+    }
+    
     return (
         <>
             <Header bg={false}>
@@ -15,10 +22,15 @@ export function ProfilesContainer({ user, setProfile }) {
             <Profiles>
                 <Profiles.Title>Who's watching</Profiles.Title>
                 <Profiles.List>
-                    <Profiles.User onClick={() => setProfile({
-                        displayName: user.displayName,
-                        photoUrl: user.photoUrl
-                    })}>
+                    <Profiles.User
+                        onClick={() => {
+                            setProfile({
+                                displayName: user.displayName,
+                                photoUrl: user.photoUrl
+                            })
+                            handleLoadingState()
+                        }}
+                        >
                         <Profiles.Picture src={user.photoUrl} />
                         <Profiles.Name>{user.displayName}</Profiles.Name>
                     </Profiles.User>

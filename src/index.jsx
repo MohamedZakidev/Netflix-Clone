@@ -15,6 +15,7 @@ const firebaseConfig = {
 
 const firebase = window.firebase.initializeApp(firebaseConfig)
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     <>
     <FirebaseContext.Provider value={ {firebase: firebase} }>
