@@ -43,7 +43,7 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
                 value={searchTerm}
                 onChange={({ target }) => setSearchTerm(target.value)}
                 placeholder="Search films and series"
-                active={searchActive}
+                $active={searchActive}
                 name="searchbox"
             />
         </Search>
@@ -55,6 +55,7 @@ Header.Text = function HeaderText({ children, ...restProps }) {
 }
 
 Header.Link = function HeaderLink({ children, ...restProps }) {
+    console.log(restProps)
     return <Link {...restProps}>{children}</Link>;
 }
 Header.Logo = function HeaderLogo({ to, ...restProps }) {

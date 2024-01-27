@@ -8,7 +8,7 @@ export const Background = styled.section`
     background-size: ${( {src} ) => src ? "contain" : "cover" };
     background-repeat: no-repeat;
 
-    @media (max-width: 800px) {
+    @media (max-width: 1100px) {
         ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
     }
 `
@@ -84,6 +84,7 @@ export const Text = styled.p`
     color: white;
     font-size: 22px;
     line-height: normal;
+    max-width: 600px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 `; 
 
@@ -93,7 +94,7 @@ export const Feature = styled(Container)`
     align-items: normal;
     width: 50%;
     
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         display: none;
     }
 `;
