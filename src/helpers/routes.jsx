@@ -1,53 +1,58 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
-
-export function IsUserRedirect({ user, loggedInPath, children, ...restProps }) {
-    return (
-        <Route
-            {...restProps}
-            render={() => {
-                if (!user) {
-                    return children;
-                }
+import { Navigate, Outlet } from 'react-router-dom';
+import * as ROUTES from '../constants/routes'
+// export function IsUserRedirect({ user, loggedInPath, children, ...restProps }) {
+//     return (
+//         <Route
+//             {...restProps}
+//             render={() => {
+//                 if (!user) {
+//                     return children;
+//                 }
                 
-                if (user) {
-                    return (
-                        <Navigate
-                            to={{
-                                pathname: loggedInPath,
-                            }}
-                        />
-                    );
-                }
+//                 if (user) {
+//                     return (
+//                         <Navigate
+//                             to={{
+//                                 pathname: loggedInPath,
+//                             }}
+//                         />
+//                     );
+//                 }
             
-            return null;
-        }}
-        />
-    )
-}
+//             return null;
+//         }}
+//         />
+//     )
+// }
 
-export function ProtectedRoute({ user, children, ...restProps }) {
-    return (
-        <Route
+export function AuthRequired({ user, children, ...restProps }) {
+    console.log(user)
+    if(user) {
+        <Navigate
+            to={ROUTES.SIGN_IN}
             {...restProps}
-            render={({ location }) => {
-                if (user) {
-                    return children;
-                }
-                
-                if (!user) {
-                    return (
-                        <Navigate
-                            to={{
-                                pathname: 'signin',
-                                state: { from: location },
-                            }}
-                        />
-                    );
-                }
-                
-                return null;
-            }}
         />
-    )
+    }
+    
+    return <Outlet />
 }
+// {...restProps}
+// render={({ location }) => {
+//     if (user) {
+//         return children;
+//     }
+    
+//     if (!user) {
+//         return (
+//             <Navigate
+//                 to={{
+//                     pathname: 'signin',
+//                     state: { from: location },
+//                 }}
+//             />
+//         );
+//     }
+    
+//     return null;
+// }}
