@@ -5,8 +5,11 @@ import Home from "./pages/home"
 import Signin from "./pages/signin"
 import Signup from "./pages/signup"
 import Browse from "./pages/browse"
-
+import useAuthListener from "./hooks/useAuthListener"
+import { IsUserRedirect, ProtectedRoute } from "./helpers/routes"
 function App() {
+  const { user } = useAuthListener
+
   return (
     <BrowserRouter>
       <Routes>

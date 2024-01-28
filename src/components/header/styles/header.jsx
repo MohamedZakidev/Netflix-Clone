@@ -9,7 +9,7 @@ export const Background = styled.section`
     background-repeat: no-repeat;
 
     @media (max-width: 1100px) {
-        ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
+        ${({ $dontShowOnSmallViewPort }) => $dontShowOnSmallViewPort && `background: none;`}
     }
 `
 
@@ -34,7 +34,7 @@ export const Link = styled.p`
     color: #fff;
     text-decoration: none;
     margin-right: 30px;
-    font-weight: ${({ active }) => (active === 'true' ? '700' : 'normal')};
+    font-weight: ${({ $active }) => ($active === 'true' ? '700' : 'normal')};
     cursor: pointer;
     
     &:hover {
@@ -155,10 +155,10 @@ export const SearchInput = styled.input`
     transition: width 0.5s;
     height: 30px;
     font-size: 14px;
-    margin-left: ${({ active }) => (active === true ? '10px' : '0')};
-    padding: ${({ active }) => (active === true ? '0 10px' : '0')};
-    width: ${({ active }) => (active === true ? '200px' : '0px')};
-    border: ${({ active }) => active ? '1px solid rgba(255, 255, 255, .75)' : '1px solid rgba(255, 255, 255, 1)'};
+    margin-left: ${({ $active }) => ($active === true ? '10px' : '0')};
+    padding: ${({ $active }) => ($active === true ? '0 10px' : '0')};
+    width: ${({ $active }) => ($active === true ? '200px' : '0px')};
+    border: ${({ $active }) => $active ? '1px solid rgba(255, 255, 255, .75)' : '1px solid rgba(255, 255, 255, 1)'};
 
     &:hover, &:focus {
         outline: 0;

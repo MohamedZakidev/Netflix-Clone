@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 import React, { useContext, useState, useEffect } from "react";
 import Header from "../components/header";
 import Card from "../components/card";
+import Player from "../components/player";
 import Loading from "../components/loading";
 import { FooterContainer } from "./footer";
 import { ProfilesContainer } from './profiles';
 import { FirebaseContext } from '../context/firebase';
 import * as ROUTES from '../constants/routes'
+import Fuse from "fuse.js";
 
 export function BrowseContainer({ slides }) {
     const [profile, setProfile] = useState({});
@@ -24,6 +27,17 @@ export function BrowseContainer({ slides }) {
     useEffect(() => {
         setSlideRows(slides[category])
     },[slides, category])
+
+
+    useEffect(() => {
+        const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
+        const results = fuse.search(searchTerm).map(({ item }) => item);        
+        if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+            setSlideRows(results);
+        } else {
+            setSlideRows(slides[category]);
+        }
+    }, [searchTerm])
 
     return profile.displayName ? (
         <>
@@ -88,7 +102,10 @@ export function BrowseContainer({ slides }) {
                             ))}
                         </Card.Entities>
                         <Card.Feature category={category}>
-                            <p>I am the feature!</p>
+                            <Player>
+                                <Player.Button />
+                                <Player.Video />
+                            </Player>
                         </Card.Feature>
                     </Card>
                 ))}
