@@ -1,6 +1,19 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import * as ROUTES from '../constants/routes'
+
+export function AuthRequired({ user, children, ...restProps }) {
+    if(!user) {
+        return (
+            <Navigate
+                to={ROUTES.SIGN_IN}
+                {...restProps}
+            />
+        )
+    }
+    
+    return <Outlet />
+}
 // export function IsUserRedirect({ user, loggedInPath, children, ...restProps }) {
 //     return (
 //         <Route
@@ -26,17 +39,6 @@ import * as ROUTES from '../constants/routes'
 //     )
 // }
 
-export function AuthRequired({ user, children, ...restProps }) {
-    console.log(user)
-    if(user) {
-        <Navigate
-            to={ROUTES.SIGN_IN}
-            {...restProps}
-        />
-    }
-    
-    return <Outlet />
-}
 // {...restProps}
 // render={({ location }) => {
 //     if (user) {
