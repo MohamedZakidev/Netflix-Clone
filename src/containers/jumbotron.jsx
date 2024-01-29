@@ -1,8 +1,8 @@
 import React from "react";
-import jumboData from "../fixtures/jumbo.json"
+import jumboData from "../fixtures/jumbo"
 import Jumbotron from "../components/jumbotron";
-import homeBg from "/images/misc/home-bg.jpg"
-
+console.log(jumboData)
+import jumbPic from "../../images/misc/home-tv.jpg"
 
 export function JumbotronContainer() {
     return (
