@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import Header from "../components/header";
 import * as ROUTES from "../constants/routes"
 import Profiles from "../components/profiles";
+import netflixLogo from "/images/misc/logo.svg"
+
 
 export function ProfilesContainer({loading, setLoading, displayedUser, setProfile }) {
 
@@ -18,7 +20,7 @@ export function ProfilesContainer({loading, setLoading, displayedUser, setProfil
         <>
             <Header bg={false}>
                 <Header.Frame>
-                    <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="Netflix logo"/>
+                    <Header.Logo to={ROUTES.HOME} src={netflixLogo} alt="Netflix logo"/>
                 </Header.Frame>
             </Header>
             <Profiles>
