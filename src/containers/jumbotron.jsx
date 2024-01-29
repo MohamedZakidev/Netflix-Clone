@@ -6,8 +6,6 @@ export function JumbotronContainer() {
     return (
         <Jumbotron.Container>
             {jumboData.map(item => {
-                const image = item.image
-                console.log(image)
             return (
                 <Jumbotron key={item.id} direction={item.direction}>
                     <Jumbotron.Pane>
@@ -15,7 +13,7 @@ export function JumbotronContainer() {
                         <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
                     </Jumbotron.Pane>
                     <Jumbotron.Pane>
-                        <Jumbotron.Image src={`../../${image}`} alt={item.alt}/>
+                        <Jumbotron.Image src={item.image} alt={item.alt}/>
                     </Jumbotron.Pane>
                 </Jumbotron>
             )
