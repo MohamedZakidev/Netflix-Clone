@@ -6,7 +6,7 @@ import Profiles from "../components/profiles";
 
 
 export function ProfilesContainer({loading, setLoading, displayedUser, setProfile }) {
-
+    // console.log(displayedUser)
     function handleLoadingState() {
         setLoading(true)
         setTimeout(() => {
@@ -28,14 +28,14 @@ export function ProfilesContainer({loading, setLoading, displayedUser, setProfil
                     <Profiles.User
                         onClick={() => {
                             setProfile({
-                                displayName: displayedUser.displayName,
+                                displayName: displayedUser.userName,
                                 photoUrl: displayedUser.photoUrl
                             })
                             handleLoadingState()
                         }}
                         >
                         <Profiles.Picture src={displayedUser.photoUrl} />
-                        <Profiles.Name>{displayedUser.displayName}</Profiles.Name>
+                        <Profiles.Name>{displayedUser.userName}</Profiles.Name>
                     </Profiles.User>
                 </Profiles.List>
             </Profiles>

@@ -1,40 +1,28 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { FirebaseContext } from "../context/firebase";
-import { HeaderContainer } from "../containers/header";
-import { FooterContainer } from "../containers/footer";
-import Form from "../components/form";
-import * as ROUTES from '../constants/routes'
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FirebaseContext } from '../context/firebase';
+import { FooterContainer } from '../containers/footer';
+import { HeaderContainer } from '../containers/header';
+import Form from '../components/form';
+import * as ROUTES from '../constants/routes';
 
 export default function Signup() {
-    const navigate = useNavigate()
-    const { firebase } = useContext(FirebaseContext)
-
-    const [formData, setFormData] = useState({
-        firstName: '',
-        email: '',
-        password: '',
-    })
-    const [error, setError] = useState()
-
-    const { firstName, email, password } = formData
-    const isInvalid = firstName === '' || email === '' || password === ''
-
-    function handleChange(event) {
-        const { name, value, type } = event.target
-        setFormData((prevFormData) => {
-            return {
-                ...prevFormData,
-                [name]: value
-            }
-        })
-    }
+    const navigate = useNavigate();
+    const { firebase } = useContext(FirebaseContext);
     
-    function handleSignup(event) {
-        event.preventDefault()
-        firebase.firebase_
+    const [firstName, setFirstName] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    
+    const isInvalid = firstName === '' || password === '' || emailAddress === '';
+    
+    const handleSignup = (event) => {
+        event.preventDefault();
+        
+        firebase
             .auth()
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(emailAddress, password)
             .then((result) =>
                 result.user
                 .updateProfile({
@@ -42,50 +30,48 @@ export default function Signup() {
                     photoURL: Math.floor(Math.random() * 5 ) + 1,
                 })
                 .then(() => {
-                    setFormData((prev) => ({...prev, email: "", password: ""}))
-                    setError('');
-                    navigate(ROUTES.BROWSE)
+                    navigate(ROUTES.BROWSE);
                 })
-            ).catch((error) => setError(error.message));
-    }
-
+            )
+            .catch((error) => {
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            });
+    };
+    
     return (
         <>
             <HeaderContainer>
-            <Form>
-                <Form.Title>Sign up</Form.Title>
-                {error && <Form.Error>{error}</Form.Error>}
+                <Form>
+                    <Form.Title>Sign Up</Form.Title>
+                    {error && <Form.Error>{error}</Form.Error>}
+                    
                     <Form.Base onSubmit={handleSignup} method="POST">
                         <Form.Input
-                            type="text"
-                            placeholder="First name"
+                            placeholder="First Name"
                             value={firstName}
-                            name="firstName"
-                            onChange={handleChange}
+                            onChange={({ target }) => setFirstName(target.value)}
                         />
                         <Form.Input
-                            type="text"
-                            placeholder="Email address"
-                            value={email}
-                            name="email"
-                            onChange={handleChange}
+                            placeholder="Email Address"
+                            value={emailAddress}
+                            onChange={({ target }) => setEmailAddress(target.value)}
                         />
                         <Form.Input
                             type="password"
-                            placeholder="Password"
                             value={password}
-                            name="password"
-                            onChange={handleChange}
                             autoComplete="off"
+                            placeholder="Password"
+                            onChange={({ target }) => setPassword(target.value)}
                         />
-
                         <Form.Submit disabled={isInvalid} type="submit">
-                            Sign up
+                            Sign Up
                         </Form.Submit>
-
+                        
                         <Form.Text>
-                            Have an account? <Form.Link to="/signin">Sign in now.</Form.Link>
-                        </Form.Text>    
+                            Already a user? <Form.Link to="/signin">Sign up now.</Form.Link>
+                        </Form.Text>
                         <Form.TextSmall>
                             This page is protected by Google reCAPTCHA.
                         </Form.TextSmall>
@@ -94,6 +80,5 @@ export default function Signup() {
             </HeaderContainer>
             <FooterContainer />
         </>
-        
     )
 }

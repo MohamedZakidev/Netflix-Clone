@@ -7,11 +7,11 @@ import Signup from "./pages/signup"
 import Browse from "./pages/browse"
 import useAuthListener from "./hooks/useAuthListener"
 import { AuthRequired, UserRedirect } from "./helpers/routes" 
-// to implement RedirectUsers
 
 function App() {
   const { user } = useAuthListener()
-
+  console.log(user)
+  console.log("App render")
   return (
     <BrowserRouter>
       <Routes>
