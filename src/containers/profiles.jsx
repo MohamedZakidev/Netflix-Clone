@@ -19,7 +19,7 @@ export function ProfilesContainer({loading, setLoading, displayedUser, setProfil
         <>
             <Header bg={false}>
                 <Header.Frame>
-                    <Header.Logo to={ROUTES.HOME} src="/public/misc/logo.svg" alt="Netflix logo"/>
+                    <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="Netflix logo"/>
                 </Header.Frame>
             </Header>
             <Profiles>
