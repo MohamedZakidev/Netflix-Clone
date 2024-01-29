@@ -1,6 +1,8 @@
 import React from "react";
 import jumboData from "../fixtures/jumbo.json"
 import Jumbotron from "../components/jumbotron";
+import homeBg from "../../images/misc/home-bg.jpg"
+
 
 export function JumbotronContainer() {
     return (
@@ -13,7 +15,7 @@ export function JumbotronContainer() {
                         <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
                     </Jumbotron.Pane>
                     <Jumbotron.Pane>
-                        <Jumbotron.Image src="../../images/misc/home-bg.jpg" alt={item.alt}/>
+                        <Jumbotron.Image src={homeBg} alt={item.alt}/>
                     </Jumbotron.Pane>
                 </Jumbotron>
             )
