@@ -17,7 +17,7 @@ export function BrowseContainer({ user, slides }) {
     const [profile, setProfile] = useState({});
     const [category, setCategory] = useState('series')
     const [searchTerm, setSearchTerm] = useState('')
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState()
     const [slideRows, setSlideRows] = useState([])
     
     const { firebase } = useContext(FirebaseContext)
@@ -51,18 +51,22 @@ export function BrowseContainer({ user, slides }) {
             {loading ? <Loading src={displayedUser.photoUrl}/> : <Loading.ReleaseBody />}
             <Header src="joker1" $dontShowOnSmallViewPort>
                 <Header.Frame>
-                    <Header.Group>
+                    <Header.Group $navLink>
                         <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="Netflix" />
-                        <Header.Link 
-                            $active={category === 'series' ? 'true' : 'false'}
-                            onClick={() => setCategory('series')}>
-                            Series
-                        </Header.Link>
-                        <Header.Link 
-                            $active={category === 'films' ? 'true' : 'false'}
-                            onClick={() => setCategory('films')}>
-                            Films
-                        </Header.Link>
+                        <div>
+                            <Header.Link
+                                $navLink 
+                                $active={category === 'series' ? 'true' : 'false'}
+                                onClick={() => setCategory('series')}>
+                                Series
+                            </Header.Link>
+                            <Header.Link
+                                $navLink 
+                                $active={category === 'films' ? 'true' : 'false'}
+                                onClick={() => setCategory('films')}>
+                                Films
+                            </Header.Link>
+                        </div>
                     </Header.Group>
 
                     <Header.Group>

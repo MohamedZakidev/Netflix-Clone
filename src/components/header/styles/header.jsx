@@ -32,10 +32,12 @@ export const Container = styled.div`
 `;
 
 export const Link = styled.p`
-    color: #fff;
+    color: ${({ $navLink }) => $navLink ? "#fff" : "#fff"};
+    font-size: ${({ $navLink }) => $navLink ? "22px" : "unset"};
+    font-weight: ${({ $active }) => ($active === 'true' ? '700' : 'normal')};
+    text-shadow: ${({ $navLink }) => $navLink ? "4px 4px 4px rgba(0, 0, 0, 0.75)" : "none"};
     text-decoration: none;
     margin-right: 30px;
-    font-weight: ${({ $active }) => ($active === 'true' ? '700' : 'normal')};
     cursor: pointer;
     
     &:hover {
@@ -78,7 +80,14 @@ export const Logo = styled.img`
 
 export const Group = styled.div`
     display: flex;
+    flex: ${({$navLink}) => $navLink ? "1" : "unset"};
+    max-width: ${({$navLink}) => $navLink ? "500px" : "unset"};
+    justify-content: ${({$navLink}) => $navLink ? "space-between" : "unset"};
     align-items: center;
+
+    div {
+        display: ${({$navLink}) => $navLink && "flex"};
+    }
 `;
 
 export const Text = styled.p`
