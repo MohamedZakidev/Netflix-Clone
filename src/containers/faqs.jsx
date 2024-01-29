@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Accordion from "../components/accordion";
 import faqsData from "../fixtures/faqs.json";
 import OptForm from "../components/opt-form";
-import chevronRight from "../../images/icons/chevron-right.png"
+import chevronRight from "/icons/chevron-right.png"
 
 export function FaqsContainer() {
     const inputRef = useRef()

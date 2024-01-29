@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from 'react';
 import { Body, Title, Header, Container, Inner, Item, Frame } from './styles/accordion';
-import closeIcon from "../../../images/icons/close-slim.png"
-import openIcon from "../../../images/icons/add.png"
+import closeIcon from "/icons/close-slim.png"
+import openIcon from "/icons/add.png"
 
 const ToggleContext = createContext()
 

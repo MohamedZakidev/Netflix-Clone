@@ -5,7 +5,6 @@ import { FaqsContainer } from "../containers/faqs";
 import { HeaderContainer } from "../containers/header";
 import OptForm from "../components/opt-form";
 import Feature from "../components/feature";
-import chevronRight from "../../images/icons/chevron-right.png"
 
 export default function Home() {
     const inputRef = useRef()
@@ -21,7 +20,7 @@ export default function Home() {
                     <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
                     <OptForm>
                         <OptForm.Input ref={inputRef} placeholder="Email Address" />
-                        <OptForm.Button onClick={handleFocus}>Get Started <img src={chevronRight} alt="get started" /></OptForm.Button>
+                        <OptForm.Button onClick={handleFocus}>Get Started <img src="/public/icons/chevron-right.png" alt="get started" /></OptForm.Button>
                         <OptForm.Text>Ready to watch? Enter your email to create or restart
                         your membership.</OptForm.Text>
                     </OptForm>

@@ -18,8 +18,8 @@ Profiles.User = function ProfilesUser({ children, ...restProps }) {
 }
 
 Profiles.Picture = function ProfilesPicture({ src, ...restProps }) {
-    return <Picture {...restProps} src={src ? `/images/users/${src}.png` :
-    '/images/misc/loading.gif'} />;
+    return <Picture {...restProps} src={src ? `/users/${src}.png` :
+    '/misc/loading.gif'} />;
 }
 
 Profiles.Name = function ProfilesName({ children, ...restProps }) {
