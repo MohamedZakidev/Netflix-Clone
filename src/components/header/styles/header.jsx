@@ -84,7 +84,6 @@ export const Group = styled.div`
     max-width: ${({$navLink}) => $navLink ? "500px" : "unset"};
     justify-content: ${({$navLink}) => $navLink ? "space-between" : "unset"};
     align-items: center;
-
     div {
         display: ${({$navLink}) => $navLink && "flex"};
     }
