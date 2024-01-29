@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Accordion from "../components/accordion";
 import faqsData from "../fixtures/faqs.json";
 import OptForm from "../components/opt-form";
+import chevronRight from "../../images/icons/chevron-right.png"
 
 export function FaqsContainer() {
     const inputRef = useRef()
@@ -22,7 +23,7 @@ export function FaqsContainer() {
             </Accordion.Frame>
             <OptForm>
                 <OptForm.Input ref={inputRef}  placeholder='Email address' />
-                <OptForm.Button onClick={handleFocus}>Get Started <img src="/images/icons/chevron-right.png" alt="get started" /></OptForm.Button>
+                <OptForm.Button onClick={handleFocus}>Get Started <img src={chevronRight} alt="get started" /></OptForm.Button>
                 <OptForm.Text>Ready to watch? Enter your email to create or restart your membership.</OptForm.Text>
             </OptForm>
         </Accordion>
