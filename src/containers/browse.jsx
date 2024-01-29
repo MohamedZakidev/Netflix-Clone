@@ -17,7 +17,7 @@ export function BrowseContainer({ user, slides }) {
     const [profile, setProfile] = useState({});
     const [category, setCategory] = useState('series')
     const [searchTerm, setSearchTerm] = useState('')
-    const [loading, setLoading] = useState()
+    const [loading, setLoading] = useState(true)
     const [slideRows, setSlideRows] = useState([])
     
     const { firebase } = useContext(FirebaseContext)
