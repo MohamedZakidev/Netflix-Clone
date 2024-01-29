@@ -1,7 +1,7 @@
 import React from "react";
 import jumboData from "../fixtures/jumbo.json"
 import Jumbotron from "../components/jumbotron";
-import homeBg from "../../images/misc/home-bg.jpg"
+import homeBg from "/images/misc/home-bg.jpg"
 
 
 export function JumbotronContainer() {
