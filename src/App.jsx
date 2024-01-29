@@ -6,24 +6,24 @@ import Signin from "./pages/signin"
 import Signup from "./pages/signup"
 import Browse from "./pages/browse"
 import useAuthListener from "./hooks/useAuthListener"
-import { AuthRequired, RedirectUsers } from "./helpers/routes" 
+import { AuthRequired, UserRedirect } from "./helpers/routes" 
 // to implement RedirectUsers
+
 function App() {
   const { user } = useAuthListener()
 
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* user Redirect needed */}
+        <Route element={<UserRedirect user={user} />}>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.SIGN_IN} element={<Signin />}/>
           <Route path={ROUTES.SIGN_UP} element={<Signup />} />
-        {/* user Redirect needed */}
+        </Route>
           
-          <Route element={<AuthRequired user={user} />}>
-            <Route path={ROUTES.BROWSE} element={<Browse />}/>
-          </Route>
+        <Route element={<AuthRequired user={user} />}>
+          <Route path={ROUTES.BROWSE} element={<Browse user={user} />}/>
+        </Route>
 
       </Routes>
     </BrowserRouter>

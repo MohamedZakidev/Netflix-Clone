@@ -8,21 +8,28 @@ import Loading from "../components/loading";
 import { FooterContainer } from "./footer";
 import { ProfilesContainer } from './profiles';
 import { FirebaseContext } from '../context/firebase';
+
 import * as ROUTES from '../constants/routes'
 import Fuse from "fuse.js";
 
-export function BrowseContainer({ slides }) {
+export function BrowseContainer({ user, slides }) {
+    
     const [profile, setProfile] = useState({});
     const [category, setCategory] = useState('series')
     const [searchTerm, setSearchTerm] = useState('')
     const [loading, setLoading] = useState(true)
     const [slideRows, setSlideRows] = useState([])
-    const firebase = useContext(FirebaseContext)
+    
+    const { firebase } = useContext(FirebaseContext)
 
-    const user = {
-        displayName: "Karl",
+    // const user = {
+    //     displayName: "Karl",
+    //     photoUrl: "1"
+    // };
+    const [displayedUser, setDisplayedUser] = useState({
+        displayName: user.displayName,
         photoUrl: "1"
-    };
+    })
     
     useEffect(() => {
         setSlideRows(slides[category])
@@ -41,18 +48,18 @@ export function BrowseContainer({ slides }) {
 
     return profile.displayName ? (
         <>
-            {loading ? <Loading src={user.photoUrl}/> : <Loading.ReleaseBody />}
+            {loading ? <Loading src={displayedUser.photoUrl}/> : <Loading.ReleaseBody />}
             <Header src="joker1" $dontShowOnSmallViewPort>
                 <Header.Frame>
                     <Header.Group>
                         <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="Netflix" />
                         <Header.Link 
-                            active={category === 'series' ? 'true' : 'false'}
+                            $active={category === 'series' ? 'true' : 'false'}
                             onClick={() => setCategory('series')}>
                             Series
                         </Header.Link>
                         <Header.Link 
-                            active={category === 'films' ? 'true' : 'false'}
+                            $active={category === 'films' ? 'true' : 'false'}
                             onClick={() => setCategory('films')}>
                             Films
                         </Header.Link>
@@ -61,15 +68,16 @@ export function BrowseContainer({ slides }) {
                     <Header.Group>
                         <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                         <Header.Profile>
-                            <Header.Picture src={user.photoUrl} />
+                            <Header.Picture src={displayedUser.photoUrl} />
                             <Header.Dropdown>
                                 <Header.Group>
-                                    <Header.Picture src={user.photoUrl} />
-                                    <Header.Link>{user.displayName}</Header.Link>
+                                    <Header.Picture src={displayedUser.photoUrl} />
+                                    <Header.Link>{displayedUser.displayName}</Header.Link>
                                 </Header.Group>
                                 <Header.Group>
                                     <Header.Link onClick={() => firebase.auth().signOut()}>
-                                        Sign out</Header.Link>
+                                        Sign out
+                                    </Header.Link>
                                 </Header.Group>
                             </Header.Dropdown>
                         </Header.Profile>
@@ -118,7 +126,7 @@ export function BrowseContainer({ slides }) {
             <ProfilesContainer 
             loading={loading} 
             setLoading={setLoading} 
-            user={user} 
+            displayedUser={displayedUser}
             setProfile={setProfile} />
         );
 }

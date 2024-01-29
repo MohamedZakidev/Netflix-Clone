@@ -1,17 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/header";
 import * as ROUTES from "../constants/routes"
 import Profiles from "../components/profiles";
 
-export function ProfilesContainer({ loading, setLoading, user, setProfile }) {
+export function ProfilesContainer({loading, setLoading, displayedUser, setProfile }) {
+
     function handleLoadingState() {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
         }, 3000)
     }
-    
+
+
     return (
         <>
             <Header bg={false}>
@@ -25,14 +27,14 @@ export function ProfilesContainer({ loading, setLoading, user, setProfile }) {
                     <Profiles.User
                         onClick={() => {
                             setProfile({
-                                displayName: user.displayName,
-                                photoUrl: user.photoUrl
+                                displayName: displayedUser.displayName,
+                                photoUrl: displayedUser.photoUrl
                             })
                             handleLoadingState()
                         }}
                         >
-                        <Profiles.Picture src={user.photoUrl} />
-                        <Profiles.Name>{user.displayName}</Profiles.Name>
+                        <Profiles.Picture src={displayedUser.photoUrl} />
+                        <Profiles.Name>{displayedUser.displayName}</Profiles.Name>
                     </Profiles.User>
                 </Profiles.List>
             </Profiles>

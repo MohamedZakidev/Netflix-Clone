@@ -14,47 +14,11 @@ export function AuthRequired({ user, children, ...restProps }) {
     
     return <Outlet />
 }
-// export function IsUserRedirect({ user, loggedInPath, children, ...restProps }) {
-//     return (
-//         <Route
-//             {...restProps}
-//             render={() => {
-//                 if (!user) {
-//                     return children;
-//                 }
-                
-//                 if (user) {
-//                     return (
-//                         <Navigate
-//                             to={{
-//                                 pathname: loggedInPath,
-//                             }}
-//                         />
-//                     );
-//                 }
-            
-//             return null;
-//         }}
-//         />
-//     )
-// }
 
-// {...restProps}
-// render={({ location }) => {
-//     if (user) {
-//         return children;
-//     }
-    
-//     if (!user) {
-//         return (
-//             <Navigate
-//                 to={{
-//                     pathname: 'signin',
-//                     state: { from: location },
-//                 }}
-//             />
-//         );
-//     }
-    
-//     return null;
-// }}
+export function UserRedirect({ user, children, ...restProps }) {
+    if(user) {
+        return <Navigate to={ROUTES.BROWSE} />
+    }
+
+    return <Outlet />
+}
