@@ -20,7 +20,7 @@ export default function Home() {
                     <Feature.SubTitle>Watch anywhere. Cancel at any time.</Feature.SubTitle>
                     <OptForm>
                         <OptForm.Input ref={inputRef} placeholder="Email Address" />
-                        <OptForm.Button onClick={handleFocus}>Get Started <img src="/public/icons/chevron-right.png" alt="get started" /></OptForm.Button>
+                        <OptForm.Button onClick={handleFocus}>Get Started <img src="/icons/chevron-right.png" alt="get started" /></OptForm.Button>
                         <OptForm.Text>Ready to watch? Enter your email to create or restart
                         your membership.</OptForm.Text>
                     </OptForm>
