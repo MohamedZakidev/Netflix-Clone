@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
+import homeBg from "../../../../images/misc/home-bg.jpg"
 
 export const Background = styled.section`
     display: flex;
     flex-direction: column;
-    background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../../../../images/misc/home-bg.jpg')});
+    background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : homeBg)});
     background-size: ${( {src} ) => src ? "contain" : "cover" };
     background-repeat: no-repeat;
 
