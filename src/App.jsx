@@ -16,9 +16,9 @@ function App() {
       <Routes>
         <Route element={<UserRedirect user={user} />}>
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.SIGN_IN} element={<Signin />}/>
           <Route path={ROUTES.SIGN_UP} element={<Signup />} />
         </Route>
+        <Route path={ROUTES.SIGN_IN} element={<Signin />}/>
           
         <Route element={<AuthRequired user={user} />}>
           <Route path={ROUTES.BROWSE} element={<Browse user={user} />}/>
