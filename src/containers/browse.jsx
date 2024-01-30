@@ -21,16 +21,11 @@ export function BrowseContainer({ user, slides }) {
     const [slideRows, setSlideRows] = useState([])
     
     const { firebase } = useContext(FirebaseContext)
-    // const currentUser = firebase.auth().currentUser
-    // const user = {
-        //     displayName: "Karl",s
-        //     photoUrl: "1"
-        // };
-        console.log(user)
-        const displayedUser = {
-            userName: user.displayName,
-            photoUrl: "1"
-        }
+ 
+    const displayedUser = {
+        userName: user.displayName,
+        photoUrl: "1"
+    }
 
     useEffect(() => {
         setSlideRows(slides[category])
