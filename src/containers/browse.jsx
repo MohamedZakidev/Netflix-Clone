@@ -21,7 +21,7 @@ export function BrowseContainer({ user, slides }) {
     const [slideRows, setSlideRows] = useState([])
     
     const { firebase } = useContext(FirebaseContext)
- 
+
     const displayedUser = {
         userName: user.displayName,
         photoUrl: "1"

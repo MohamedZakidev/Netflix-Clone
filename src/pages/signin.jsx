@@ -20,15 +20,15 @@ export default function Signin() {
         event.preventDefault()
 
         firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-            navigate(ROUTES.BROWSE);
-        })
-        .catch((error) => {
-            setEmailAddress('');
-            setPassword('');
-            setError(error.message);
+            .auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => {
+                navigate(ROUTES.BROWSE);
+            })
+            .catch((error) => {
+                setEmail('');
+                setPassword('');
+                setError(error.message);
         });
     }
 
