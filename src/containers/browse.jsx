@@ -8,7 +8,7 @@ import Loading from "../components/loading";
 import { FooterContainer } from "./footer";
 import { ProfilesContainer } from './profiles';
 import { FirebaseContext } from '../context/firebase';
-
+import useAuthListener from "../hooks/useAuthListener";
 import * as ROUTES from '../constants/routes'
 import Fuse from "fuse.js";
 
@@ -21,16 +21,16 @@ export function BrowseContainer({ user, slides }) {
     const [slideRows, setSlideRows] = useState([])
     
     const { firebase } = useContext(FirebaseContext)
-    const currentUser = firebase.auth().currentUser
-
+    // const currentUser = firebase.auth().currentUser
     // const user = {
-    //     displayName: "Karl",s
-    //     photoUrl: "1"
-    // };
-    const displayedUser = {
-        userName: user.displayName,
-        photoUrl: "1"
-    }
+        //     displayName: "Karl",s
+        //     photoUrl: "1"
+        // };
+        const displayedUser = {
+            userName: user.displayName,
+            photoUrl: "1"
+        }
+        console.log(displayedUser)
 
 
     useEffect(() => {

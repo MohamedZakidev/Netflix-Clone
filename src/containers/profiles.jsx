@@ -6,7 +6,7 @@ import Profiles from "../components/profiles";
 
 
 export function ProfilesContainer({loading, setLoading, displayedUser, setProfile }) {
-    // console.log(displayedUser)
+    console.log(displayedUser)
     function handleLoadingState() {
         setLoading(true)
         setTimeout(() => {
