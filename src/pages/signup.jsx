@@ -30,7 +30,7 @@ export default function Signup() {
                     photoURL: Math.floor(Math.random() * 5 ) + 1,
                 })
                 .then(() => {
-                    navigate(ROUTES.BROWSE);
+                    navigate(ROUTES.SIGN_IN);
                 })
             )
             .catch((error) => {
