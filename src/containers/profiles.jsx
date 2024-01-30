@@ -5,15 +5,14 @@ import * as ROUTES from "../constants/routes"
 import Profiles from "../components/profiles";
 
 
-export function ProfilesContainer({loading, setLoading, displayedUser, setProfile }) {
-    console.log(displayedUser)
+export function ProfilesContainer({setLoading, displayedUser, setProfile }) {
     function handleLoadingState() {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
         }, 3000)
     }
-
+    console.log(displayedUser)
 
     return (
         <>

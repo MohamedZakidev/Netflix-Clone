@@ -26,12 +26,11 @@ export function BrowseContainer({ user, slides }) {
         //     displayName: "Karl",s
         //     photoUrl: "1"
         // };
+        console.log(user)
         const displayedUser = {
             userName: user.displayName,
             photoUrl: "1"
         }
-        console.log(displayedUser)
-
 
     useEffect(() => {
         setSlideRows(slides[category])
