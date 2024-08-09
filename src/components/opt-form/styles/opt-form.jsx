@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as ReachRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
     display: flex;
@@ -28,7 +29,7 @@ export const Input = styled.input`
     color: white;
 `;
 
-export const Button = styled.button`
+export const Button = styled(ReachRouterLink)`
     display: flex;
     align-items: center;
     height: 70px;
@@ -39,6 +40,7 @@ export const Button = styled.button`
     font-weight: 600;
     border: 0;
     border-radius: 5px;
+    text-decoration: none;
     cursor: pointer;
     
     img {
