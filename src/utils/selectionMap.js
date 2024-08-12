@@ -1,5 +1,4 @@
 export default function selectionMap(series, films) {
-    console.log(films)
     return {
         series: [
             { title: 'Documentaries', data: series.filter((item) => item.genre === 'documentaries') },
