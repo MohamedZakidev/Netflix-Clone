@@ -6,8 +6,6 @@ import { HeaderContainer } from "../containers/header";
 import OptForm from "../components/opt-form";
 import Feature from "../components/feature";
 import * as ROUTES from "../constants/routes"
-console.log(ROUTES.SIGN_UP)
-//import routes
 
 export default function Home() {
     const inputRef = useRef()
