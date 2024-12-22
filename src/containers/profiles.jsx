@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../components/header";
-import * as ROUTES from "../constants/routes"
 import Profiles from "../components/profiles";
+import * as ROUTES from "../constants/routes";
 
 
-export function ProfilesContainer({setLoading, displayedUser, setProfile }) {
+export function ProfilesContainer({ setLoading, displayedUser, setProfile }) {
     function handleLoadingState() {
         setLoading(true)
         setTimeout(() => {
@@ -18,7 +18,7 @@ export function ProfilesContainer({setLoading, displayedUser, setProfile }) {
         <>
             <Header bg={false}>
                 <Header.Frame>
-                    <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="Netflix logo"/>
+                    <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="movlix logo" />
                 </Header.Frame>
             </Header>
             <Profiles>
@@ -32,7 +32,7 @@ export function ProfilesContainer({setLoading, displayedUser, setProfile }) {
                             })
                             handleLoadingState()
                         }}
-                        >
+                    >
                         <Profiles.Picture src={displayedUser.photoUrl} />
                         <Profiles.Name>{displayedUser.userName}</Profiles.Name>
                     </Profiles.User>

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as ROUTES from "../constants/routes"
-import { FirebaseContext } from "../context/firebase";
 import Form from "../components/form";
-import { HeaderContainer } from "../containers/header";
+import * as ROUTES from "../constants/routes";
 import { FooterContainer } from "../containers/footer";
+import { HeaderContainer } from "../containers/header";
+import { FirebaseContext } from "../context/firebase";
 
 export default function Signin() {
     const navigate = useNavigate()
@@ -13,7 +13,7 @@ export default function Signin() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState()
-    
+
     const isInvalid = email === '' || password === ''
 
     function handleSignin(event) {
@@ -29,7 +29,7 @@ export default function Signin() {
                 setEmail('');
                 setPassword('');
                 setError(error.message);
-        });
+            });
     }
 
     return (
@@ -58,8 +58,8 @@ export default function Signin() {
                         </Form.Submit>
 
                         <Form.Text>
-                            New to Netflix? <Form.Link to="/signup">Sign up now.</Form.Link>
-                        </Form.Text>    
+                            New to Movlix? <Form.Link to="/signup">Sign up now.</Form.Link>
+                        </Form.Text>
                         <Form.TextSmall>
                             This page is protected by Google reCAPTCHA.
                         </Form.TextSmall>

@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
-import React, { useContext, useState, useEffect } from "react";
-import Header from "../components/header";
+import Fuse from "fuse.js";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/card";
-import Player from "../components/player";
+import Header from "../components/header";
 import Loading from "../components/loading";
+import Player from "../components/player";
+import * as ROUTES from '../constants/routes';
+import { FirebaseContext } from '../context/firebase';
 import { FooterContainer } from "./footer";
 import { ProfilesContainer } from './profiles';
-import { FirebaseContext } from '../context/firebase';
-import useAuthListener from "../hooks/useAuthListener";
-import * as ROUTES from '../constants/routes'
-import Fuse from "fuse.js";
 
 export function BrowseContainer({ user, slides }) {
 
@@ -47,7 +46,7 @@ export function BrowseContainer({ user, slides }) {
             <Header src="joker1" $dontShowOnSmallViewPort>
                 <Header.Frame $navLink>
                     <Header.Group $navLink>
-                        <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="Netflix" />
+                        <Header.Logo to={ROUTES.HOME} src="/misc/logo.svg" alt="movlix" />
                         <div>
                             <Header.Link
                                 $navLink
