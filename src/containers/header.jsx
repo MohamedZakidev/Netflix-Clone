@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/header";
 import * as ROUTES from "../constants/routes";
-import netflixLogo from "/misc/movlix.jpg";
+import netflixLogo from "/misc/logo.svg";
 
 export function HeaderContainer({ children }) {
     return (
